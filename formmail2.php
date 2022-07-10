@@ -1,11 +1,6 @@
 <?php
-/* Remplacer votre_adresse@mail.net par votre adresse mail
-   Remplacer www.votre_domaine.net par votre nom de domaine */
 
-$adresse = "webezmoi@gmail.com";
-$site = "webez-moi.com/";
-
-$TO = $adresse;
+$adresse = "arminensi@hotmail.com";
 
 $head = "From: ".$adresse."\n";
 $head .= "X-Sender: <".$adresse.">\n";
@@ -16,19 +11,17 @@ $head .= "Content-Type: text/plain; charset=iso-8859-1\n";
 $sujet = "Formulaire de contact";
 
 $informations = "
-Nom: ".$_POST['nom']." \r\n
+Nom: ".$_POST['name']." \r\n
 Email : ".$_POST['email']." \r\n
-Numero de tel : ".$_POST['telephone']." \r\n
-Objet : ".$_POST['objet']."\r\n
-Message: ".$_POST['message']." \r\n
+Numero de tel : ".$_POST['phone']." \r\n
 ";
 
-$res = mail($TO, $sujet ,$informations, $head);
+$res = mail($adresse, $sujet ,$informations, $head);
 
 if (true == $res) {
-Header("Location: http://".$site."/formail2_ok.html" );
+	echo "Thank you for your message, we will reply as soon as possible";
 } else {
-Header("Location: http://".$site."/formail2_pasok.html" );
+	echo "An error has occurred. If the problem persists, please contact the webmaster (harwebsite@gmail.com).";
 }
 ?>
 
